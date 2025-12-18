@@ -119,6 +119,7 @@ export enum SortColumnKey {
     CreatedAt = "createdAt",
     Name = "name",
     Email = "email",
+    IsOnline = "isOnline",
 }
 
 export enum SortDirection {

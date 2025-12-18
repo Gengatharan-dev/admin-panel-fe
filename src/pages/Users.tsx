@@ -161,7 +161,7 @@ export default function Users() {
         },
         { title: 'Created At', dataIndex: 'createdAt', sorter: true, key: SortColumnKey.CreatedAt, width: 200, },
         {
-            title: 'Status', dataIndex: 'is_online', sorter: true, key: 'status', width: 140,
+            title: 'Status', dataIndex: 'isOnline', sorter: true, key: SortColumnKey.IsOnline, width: 140,
             render: (_: GetUserDetail, user: GetUserDetail) =>
                 user.isOnline ?
                     <Tag color={"green"} style={{ fontSize: 14 }}>Online</Tag>
