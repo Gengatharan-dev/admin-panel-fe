@@ -11,7 +11,7 @@ import {
 import { Link } from 'react-router-dom';
 import ErrorModal from '../components/ErrorModal';
 import { useState } from 'react';
-import { socket } from '../socket';
+import { connectSocket, socket } from '../socket';
 
 const { Title, Text } = Typography;
 
@@ -34,8 +34,10 @@ export default function Login() {
                 localStorage.setItem('token', data.data.authorization);
                 localStorage.setItem('role', String(data.data.roleId));
                 localStorage.setItem('userId', data.data.userId);
-                if (data.data.roleId === 2)
+                if (data.data.roleId === 2) {
+                    connectSocket();
                     socket.emit("user-online", data.data.userId);
+                }
                 navigate('/users', { replace: true });
             }
         } catch (err: any) {

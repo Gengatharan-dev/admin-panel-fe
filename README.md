@@ -5,4 +5,4 @@
 
 - Open the vs code, Run the commands
 - npm install
-- npm start
+- press to f5

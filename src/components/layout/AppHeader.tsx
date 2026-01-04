@@ -1,7 +1,8 @@
-import { Avatar, Dropdown, Layout, MenuProps } from 'antd';
-import {  LogoutOutlined, UserOutlined } from '@ant-design/icons';
+import { Avatar, Dropdown, Layout, MenuProps, Image } from 'antd';
+import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import { socket } from '../../socket';
+import { disconnectSocket, socket } from '../../socket';
+import logo from "../../logo.png";
 
 const { Header } = Layout;
 
@@ -24,6 +25,7 @@ export default function AppHeader() {
       onClick: () => {
         localStorage.clear();
         socket.emit("user-offline", userId);
+        disconnectSocket();
         navigate('/', { replace: true });
       },
       style: { height: "40px" },
@@ -43,7 +45,7 @@ export default function AppHeader() {
       }}
     >
       <>
-        <strong>Admin Dashboard</strong>
+        <Image src={logo} alt="Admin Dashboard" preview={false} style={{ width: 100 }} />
 
         <Dropdown
           menu={{
